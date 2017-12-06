@@ -1,0 +1,54 @@
+<div class="container">
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Choose color of background</label>
+      <div class="col-sm-4">
+        <input class="form-control" [(colorPicker)]="bgcolor"
+               [style.background]="bgcolor"  placeholder="Choose">
+      </div>
+      <!--<input [(colorPicker)]="bgcolor" [style.background]="bgcolor" placeholder="Choose color of background"/>-->
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Choose color of letters</label>
+      <div class="col-sm-4">
+        <span [(colorPicker)]="color"
+        [style.color]="color"
+        [cpPositionOffset]="'50%'"
+        [cpPositionRelativeToArrow]="true">Change my color!
+      </span>
+      </div>
+    </div>
+
+    <!--<div class="form-group row">-->
+      <!--<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<input type="email" class="form-control" id="inputEmail3" placeholder="Enter email" [(ngModel)]="email">-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group row">-->
+      <!--<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<input type="password" class="form-control" id="inputPassword3" placeholder="Enter old password">-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="form-group row">
+      <label for="exampleSelect1" class="col-sm-2 col-form-label">Select font size</label>
+      <select class="form-control col-sm-10" id="exampleSelect1" [(ngModel)]="fontSize"
+              [ngModelOptions]="{standalone: true}">
+        <option>10px</option>
+        <option>12px</option>
+        <option>14px</option>
+        <option>16px</option>
+        <option>18px</option>
+        <option>20px</option>
+      </select>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" (click)="saveChanges()">Save changes</button>
+      </div>
+    </div>
+  </form>
+</div>
+
