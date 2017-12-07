@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class ConfigService {
   public currentUser: any;
+  public currentPassword: any;
   public arrUsers: Array<any> = [];
   public styleConfigSubject = new Subject();
   public styleConfigStream$ = this.styleConfigSubject.asObservable();
@@ -21,6 +22,8 @@ export class ConfigService {
   }
 
   public saveLocalUsers() {
+    this.currentUser['password'] = this.currentPassword; //add
+    this.arrUsers.push(this.currentUser); //add
     let localUsers = JSON.stringify(this.arrUsers);
     localStorage.setItem('users', localUsers);
   }

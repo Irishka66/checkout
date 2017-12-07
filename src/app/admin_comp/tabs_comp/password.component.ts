@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'password-comp',
@@ -15,31 +16,27 @@ export class PasswordComponent {
   public newPassword1: string = undefined;
   public newPassword2: string = undefined;
 
+  constructor (private configService: ConfigService) {
+  }
+
   changePassword(){
-    // if (this.newPassword1 !== this.newPassword2){
-    //   this.visibilityNewPasswords = false;
-    // }
 
     this.visibilityFillPasswords = true;
     this.visibilityNewPasswords = true;
     this.visibilityOldPassword = true;
     this.visibilitySuccessMessage = true;
 
-
-
     if (this.oldPassword === undefined || this.newPassword1 === undefined || this.newPassword2 === undefined
       || this.oldPassword === '' || this.newPassword1 === '' || this.newPassword2 === ''){
       this.visibilityFillPasswords = false;
-    } else if (this.oldPassword === '1'){ // here should be this.oldPassword !== this.currentUserPassword
+    } else if (this.oldPassword !== this.configService.currentPassword){ // add// here should be this.oldPassword !== this.configService.currentPassword
                 this.visibilityOldPassword = false;
               } else if (this.newPassword1 !== this.newPassword2){
                         this.visibilityNewPasswords = false;
                       } else {
                         this.visibilitySuccessMessage = false;
-                        // here you should push new password to arrUsers
+                        this.configService.currentPassword = this.newPassword1;//add
                       }
-
-
 
   }
 }

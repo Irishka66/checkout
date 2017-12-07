@@ -10,3 +10,7 @@
 .invisibleNotYourData {
   display: none;
 }
+
+.invisibleUserAlreadyExist {
+  display: none;
+}

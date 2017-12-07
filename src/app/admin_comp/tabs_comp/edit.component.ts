@@ -20,7 +20,6 @@ export class EditComponent {
   public objEdits: Object = {};
 
   constructor (private configService: ConfigService) {
-
   }
 
   saveChanges() {

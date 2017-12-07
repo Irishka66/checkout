@@ -6,6 +6,8 @@
         <input type="email" class="form-control" id="inputEmail3" placeholder="Enter email" [(ngModel)]="email"
                [ngModelOptions]="{standalone: true}" name="email">
         <div class="alert alert-danger" [ngClass]="{invisibleEmail: visibilityEmail}">Incorrect syntax of email...</div>
+        <div class="alert alert-danger" [ngClass]="{invisibleUserAlreadyExist: visibilityUserAlreadyExist}">
+          User with this email is already exist...</div>
       </div>
     </div>
 
