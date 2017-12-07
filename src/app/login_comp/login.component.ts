@@ -58,6 +58,9 @@ export class LoginComponent implements OnInit {
     this.visibilityFill = true;
     this.visibilityEmail = true;
     this.visibilityNotYourData = true;
+    this.visibilityFill = true;
+    this.visibilityEmail = true;
+    this.visibilityUserAlreadyExist = true;
     let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (this.email === undefined || this.password === undefined || this.email === '' || this.password === ''){
       this.visibilityFill = false;
@@ -91,6 +94,9 @@ export class LoginComponent implements OnInit {
     this.visibilityFill = true;
     this.visibilityEmail = true;
     this.visibilityUserAlreadyExist = true;
+    this.visibilityFill = true;
+    this.visibilityEmail = true;
+    this.visibilityNotYourData = true;
     let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (this.email === undefined || this.password === undefined || this.email === '' || this.password === ''){
       this.visibilityFill = false;
