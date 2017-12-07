@@ -11,7 +11,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ConfigService } from './services/config.service';
 import {Routes, RouterModule} from '@angular/router';
-// import {ColorPickerModule} from 'angular2-color-picker';
 
 const appRoutes: Routes =[
   { path: '', component: LoginComponent},

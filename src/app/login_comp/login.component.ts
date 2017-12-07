@@ -34,13 +34,11 @@ export class LoginComponent implements OnInit {
     if (JSON.parse(localStorage.getItem('users')) !== null) {
       this.arrUsers = JSON.parse(localStorage.getItem('users'));
     }
-
     this.configService.styleConfigStream$.subscribe( (objEdits) => {
       console.log(objEdits);
       this.colorForStyling = objEdits['color'];
       this.bgcolorForStyling = objEdits['bgcolor'];
       this.fontSizeForStyling = objEdits['fontSize'];
-
       this.completeCurrentUser = {
         'idUser' : this.user['idUser'],
         'email' : this.user['email'],
@@ -53,7 +51,6 @@ export class LoginComponent implements OnInit {
       this.configService.currentPassword = this.completeCurrentUser['password'];//add
       this.arrUsers.push(this.completeCurrentUser);
       this.configService.arrUsers = this.arrUsers;
-
     });
   }
 
@@ -62,7 +59,6 @@ export class LoginComponent implements OnInit {
     this.visibilityEmail = true;
     this.visibilityNotYourData = true;
     let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-
     if (this.email === undefined || this.password === undefined || this.email === '' || this.password === ''){
       this.visibilityFill = false;
     } else if (!this.email.match(reg)) {
@@ -88,7 +84,6 @@ export class LoginComponent implements OnInit {
                 if (k == 0) {
                   this.visibilityNotYourData = false;
                 }
-
     }
   }
 
@@ -127,20 +122,6 @@ export class LoginComponent implements OnInit {
                     this.configService.arrUsers = this.arrUsers;
                     this.router.navigate(['/admin']);
                 }
-                // let indexUser: string = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
-                // this.user = {
-                //   'idUser' : indexUser,
-                //   'email' : this.email,
-                //   'password' : this.password,
-                //   'color' : undefined,
-                //   'bgcolor': undefined,
-                //   'fontSize': undefined
-                // };
-                // this.arrUsers.push(this.user);
-                // this.configService.currentUser = this.user;
-                // this.configService.currentPassword = this.user['password'];//add
-                // this.configService.arrUsers = this.arrUsers;
-                // this.router.navigate(['/admin']);
     }
   }
 

@@ -21,9 +21,6 @@ export class AdminComponent implements OnInit  {
   public fontSizeForStyling: string;
   constructor (private configService: ConfigService,
                private router: Router) {}
-
-
-
   ngOnInit() {
     this.currentUser = this.configService.currentUser;
     this.stylesConfig = {
@@ -32,7 +29,6 @@ export class AdminComponent implements OnInit  {
       fontSize: this.currentUser['fontSize']
     };
     this.setConfigStyles(this.stylesConfig);
-
     this.configService.styleConfigStream$.subscribe((objEdits) => {
       this.setConfigStyles(objEdits);
     });

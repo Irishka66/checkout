@@ -20,12 +20,10 @@ export class PasswordComponent {
   }
 
   changePassword(){
-
     this.visibilityFillPasswords = true;
     this.visibilityNewPasswords = true;
     this.visibilityOldPassword = true;
     this.visibilitySuccessMessage = true;
-
     if (this.oldPassword === undefined || this.newPassword1 === undefined || this.newPassword2 === undefined
       || this.oldPassword === '' || this.newPassword1 === '' || this.newPassword2 === ''){
       this.visibilityFillPasswords = false;
@@ -37,6 +35,5 @@ export class PasswordComponent {
                         this.visibilitySuccessMessage = false;
                         this.configService.currentPassword = this.newPassword1;//add
                       }
-
   }
 }

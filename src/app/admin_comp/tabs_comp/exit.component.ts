@@ -25,6 +25,5 @@ export class ExitComponent {
     // this.configService.setDefaultStyles();
     this.router.navigate(['/']);
     this.configService.saveLocalUsers();
-    // this.modalService.close();
   }
 }
