@@ -11,7 +11,7 @@ import { ConfigService } from '../../services/config.service';
 })
 
 export class ExitComponent {
-  public closeResult: string;
+  // public closeResult: string;
 
   constructor(private modalService: NgbModal,
               private configService: ConfigService,
@@ -22,7 +22,6 @@ export class ExitComponent {
   }
 
   logout() {
-    // this.configService.setDefaultStyles();
     this.router.navigate(['/']);
     this.configService.saveLocalUsers();
   }

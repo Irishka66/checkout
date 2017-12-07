@@ -9,15 +9,12 @@ export class ConfigService {
   public arrUsers: Array<any> = [];
   public styleConfigSubject = new Subject();
   public styleConfigStream$ = this.styleConfigSubject.asObservable();
-  public setDefaultStylesSubject = new Subject();
-  public setDefaultStylesStream$ = this.styleConfigSubject.asObservable();
 
   public setConfigStyle(objEdits) {
     this.styleConfigSubject.next(objEdits);
   }
 
   public setDefaultStyles() {
-    // this.setDefaultStylesSubject.next();
     this.styleConfigSubject.next({color:'', bgcolor: '', fontSize: ''});
   }
 

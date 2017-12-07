@@ -27,13 +27,16 @@ export class PasswordComponent {
     if (this.oldPassword === undefined || this.newPassword1 === undefined || this.newPassword2 === undefined
       || this.oldPassword === '' || this.newPassword1 === '' || this.newPassword2 === ''){
       this.visibilityFillPasswords = false;
-    } else if (this.oldPassword !== this.configService.currentPassword){ // add// here should be this.oldPassword !== this.configService.currentPassword
+    } else if (this.oldPassword !== this.configService.currentPassword){
                 this.visibilityOldPassword = false;
               } else if (this.newPassword1 !== this.newPassword2){
                         this.visibilityNewPasswords = false;
                       } else {
                         this.visibilitySuccessMessage = false;
-                        this.configService.currentPassword = this.newPassword1;//add
+                        this.configService.currentPassword = this.newPassword1;
+                        this.configService.currentUser['password'] = this.newPassword1;
+                        this.configService.arrUsers.push(this.configService.currentUser);
+                        this.configService.saveLocalUsers();
                       }
   }
 }

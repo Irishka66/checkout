@@ -9,11 +9,6 @@ import { Router } from '@angular/router';
 })
 
 export class AdminComponent implements OnInit  {
-  // @HostListener('window:beforeunload', ['$event'])
-  // beforeunloadHandler() {
-  //   this.saveLocalUsers();
-  //   // this.router.navigate(['/']);
-  // }
   public currentUser: object;
   public stylesConfig: object;
   public colorForStyling: string;
@@ -38,8 +33,4 @@ export class AdminComponent implements OnInit  {
     this.bgcolorForStyling = configStyles['bgcolor'];
     this.fontSizeForStyling = configStyles['fontSize'];
   }
-
-  // saveLocalUsers() {
-  //   this.configService.saveLocalUsers();
-  // }
 }

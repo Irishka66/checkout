@@ -9,10 +9,6 @@ import { Router} from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-  // @HostListener('window:beforeunload', ['$event'])
-  // beforeunloadHandler() {
-  //   this.saveLocalUsers();
-  // }
   constructor (private configService: ConfigService,
                private router: Router) {}
 
@@ -35,10 +31,21 @@ export class LoginComponent implements OnInit {
       this.arrUsers = JSON.parse(localStorage.getItem('users'));
     }
     this.configService.styleConfigStream$.subscribe( (objEdits) => {
-      console.log(objEdits);
-      this.colorForStyling = objEdits['color'];
-      this.bgcolorForStyling = objEdits['bgcolor'];
-      this.fontSizeForStyling = objEdits['fontSize'];
+      if (objEdits['color']) {
+        this.colorForStyling = objEdits['color'];
+      } else {
+        this.colorForStyling = this.configService.currentUser['color'];
+      }
+      if (objEdits['bgcolor']) {
+        this.bgcolorForStyling = objEdits['bgcolor'];
+      } else {
+        this.bgcolorForStyling = this.configService.currentUser['bgcolor'];
+      }
+      if (objEdits['fontSize']) {
+        this.fontSizeForStyling = objEdits['fontSize'];
+      } else {
+        this.fontSizeForStyling = this.configService.currentUser['fontSize'];
+      }
       this.completeCurrentUser = {
         'idUser' : this.user['idUser'],
         'email' : this.user['email'],
@@ -47,10 +54,11 @@ export class LoginComponent implements OnInit {
         'bgcolor': this.bgcolorForStyling,
         'fontSize': this.fontSizeForStyling
       };
-      this.configService.currentUser = this.completeCurrentUser;//add
-      this.configService.currentPassword = this.completeCurrentUser['password'];//add
+      this.configService.currentUser = this.completeCurrentUser;
+      this.configService.currentPassword = this.completeCurrentUser['password'];
       this.arrUsers.push(this.completeCurrentUser);
       this.configService.arrUsers = this.arrUsers;
+      this.configService.saveLocalUsers();
     });
   }
 
@@ -118,9 +126,9 @@ export class LoginComponent implements OnInit {
                       'idUser' : indexUser,
                       'email' : this.email,
                       'password' : this.password,
-                      'color' : undefined,
-                      'bgcolor': undefined,
-                      'fontSize': undefined
+                      'color' : '',
+                      'bgcolor': '',
+                      'fontSize': ''
                     };
                     this.arrUsers.push(this.user);
                     this.configService.currentUser = this.user;
@@ -130,8 +138,4 @@ export class LoginComponent implements OnInit {
                 }
     }
   }
-
-  // saveLocalUsers() {
-  //   this.configService.saveLocalUsers(this.arrUsers);
-  // }
 }
