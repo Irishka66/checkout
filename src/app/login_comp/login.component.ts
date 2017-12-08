@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   public colorForStyling: string;
   public bgcolorForStyling: string;
   public fontSizeForStyling: string;
-  public currentUser: Object;
   public completeCurrentUser: Object;
   public email: string = undefined;
   public password: string = undefined;
@@ -97,8 +96,6 @@ export class LoginComponent implements OnInit {
                       fontSize: this.user['fontSize']
                     };
                     this.router.navigate(['/admin']);
-                    // changing color, bgcolor, font-size, according to current user's data. Hey, I don't need it!
-                    this.configService.setConfigStyle(styleConfig);
                     k = 1;
                     break;
                   }

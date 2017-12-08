@@ -10,15 +10,10 @@ export class ConfigService {
   public styleConfigSubject = new Subject();
   public styleConfigStream$ = this.styleConfigSubject.asObservable();
 
-  // this method control changes in edit.component
+  // this method controls changes in edit.component
   public setConfigStyle(objEdits) {
     this.styleConfigSubject.next(objEdits);
   }
-
-  //I don't use this method, I think!
-  // public setDefaultStyles() {
-  //   this.styleConfigSubject.next({color:'', bgcolor: '', fontSize: ''});
-  // }
 
   // this method save current arrUsers to local storage
   public saveLocalUsers() {
@@ -38,5 +33,4 @@ export class ConfigService {
   }
 
   constructor() { }
-
 }
