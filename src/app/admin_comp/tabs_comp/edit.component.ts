@@ -1,6 +1,5 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
 import { ConfigService } from '../../services/config.service';
-// import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorPickerService, Rgba } from 'ngx-color-picker';
 
 @Component({
@@ -25,6 +24,7 @@ export class EditComponent {
       'color' : this.color,
       'fontSize' : this.fontSize
     };
+    // put edit-data to service
     this.configService.setConfigStyle(this.objEdits);
   }
 }

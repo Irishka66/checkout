@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../services/config.service';
@@ -11,18 +11,18 @@ import { ConfigService } from '../../services/config.service';
 })
 
 export class ExitComponent {
-  // public closeResult: string;
 
   constructor(private modalService: NgbModal,
               private configService: ConfigService,
               private router: Router) {}
-
+// this method is for modal window from bootstrap
   open(content) {
     this.modalService.open(content);
   }
 
   logout() {
     this.router.navigate(['/']);
+    // this method saving current user's data to local storage when he exit
     this.configService.saveLocalUsers();
   }
 }

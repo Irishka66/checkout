@@ -10,17 +10,21 @@ export class ConfigService {
   public styleConfigSubject = new Subject();
   public styleConfigStream$ = this.styleConfigSubject.asObservable();
 
+  // this method control changes in edit.component
   public setConfigStyle(objEdits) {
     this.styleConfigSubject.next(objEdits);
   }
 
-  public setDefaultStyles() {
-    this.styleConfigSubject.next({color:'', bgcolor: '', fontSize: ''});
-  }
+  //I don't use this method, I think!
+  // public setDefaultStyles() {
+  //   this.styleConfigSubject.next({color:'', bgcolor: '', fontSize: ''});
+  // }
 
+  // this method save current arrUsers to local storage
   public saveLocalUsers() {
-    this.currentUser['password'] = this.currentPassword; //add
-    this.arrUsers.push(this.currentUser); //add
+    this.currentUser['password'] = this.currentPassword;
+    this.arrUsers.push(this.currentUser);
+    // I should take the last version of user's data and I should delete all dublicates
     for (let i = this.arrUsers.length - 1; i >= 0; i--) {
       for (let j = i - 1; j >= 0; j--) {
         if (this.arrUsers[i]['idUser'] == this.arrUsers[j]['idUser']) {

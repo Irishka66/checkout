@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { Component } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 
 @Component({
@@ -24,13 +24,17 @@ export class PasswordComponent {
     this.visibilityNewPasswords = true;
     this.visibilityOldPassword = true;
     this.visibilitySuccessMessage = true;
+    // checking for filling all fields
     if (this.oldPassword === undefined || this.newPassword1 === undefined || this.newPassword2 === undefined
       || this.oldPassword === '' || this.newPassword1 === '' || this.newPassword2 === ''){
       this.visibilityFillPasswords = false;
+      // checking if password in old-password-input is equal to real current password
     } else if (this.oldPassword !== this.configService.currentPassword){
                 this.visibilityOldPassword = false;
+                // checking if two new passwords are equal
               } else if (this.newPassword1 !== this.newPassword2){
                         this.visibilityNewPasswords = false;
+                        // put new password to service
                       } else {
                         this.visibilitySuccessMessage = false;
                         this.configService.currentPassword = this.newPassword1;

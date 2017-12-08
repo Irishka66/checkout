@@ -27,10 +27,13 @@ export class LoginComponent implements OnInit {
   public visibilityUserAlreadyExist: boolean = true;
 
   ngOnInit() {
+    // take arrUsers from local storage
     if (JSON.parse(localStorage.getItem('users')) !== null) {
       this.arrUsers = JSON.parse(localStorage.getItem('users'));
     }
+    // taking data from service
     this.configService.styleConfigStream$.subscribe( (objEdits) => {
+      // I should check if objEdits-data is not empty
       if (objEdits['color']) {
         this.colorForStyling = objEdits['color'];
       } else {
@@ -46,6 +49,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.fontSizeForStyling = this.configService.currentUser['fontSize'];
       }
+      // making complete current user
       this.completeCurrentUser = {
         'idUser' : this.user['idUser'],
         'email' : this.user['email'],
@@ -54,6 +58,7 @@ export class LoginComponent implements OnInit {
         'bgcolor': this.bgcolorForStyling,
         'fontSize': this.fontSizeForStyling
       };
+      // all current data I should put to service
       this.configService.currentUser = this.completeCurrentUser;
       this.configService.currentPassword = this.completeCurrentUser['password'];
       this.arrUsers.push(this.completeCurrentUser);
@@ -70,14 +75,19 @@ export class LoginComponent implements OnInit {
     this.visibilityEmail = true;
     this.visibilityUserAlreadyExist = true;
     let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    // checking for filling all fields
     if (this.email === undefined || this.password === undefined || this.email === '' || this.password === ''){
       this.visibilityFill = false;
+      // checking for correct syntax of email
     } else if (!this.email.match(reg)) {
               this.visibilityEmail = false;
+              // I should find sign-in-user in arrUsers
             } else {
                 let k: number = 0;
                 for (let i = this.arrUsers.length - 1; i >= 0; i--) {
+                  // if email and password are in arrUsers
                   if (this.email == this.arrUsers[i]['email'] && this.password == this.arrUsers[i]['password']) {
+                    // setting current user
                     this.user = this.arrUsers[i];
                     this.configService.currentUser = this.user;
                     this.configService.currentPassword = this.user['password'];//add
@@ -87,11 +97,13 @@ export class LoginComponent implements OnInit {
                       fontSize: this.user['fontSize']
                     };
                     this.router.navigate(['/admin']);
+                    // changing color, bgcolor, font-size, according to current user's data. Hey, I don't need it!
                     this.configService.setConfigStyle(styleConfig);
                     k = 1;
                     break;
                   }
                 }
+                // if email and password are not in arrUsers
                 if (k == 0) {
                   this.visibilityNotYourData = false;
                 }
@@ -106,10 +118,13 @@ export class LoginComponent implements OnInit {
     this.visibilityEmail = true;
     this.visibilityNotYourData = true;
     let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    // checking for filling all fields
     if (this.email === undefined || this.password === undefined || this.email === '' || this.password === ''){
       this.visibilityFill = false;
+      // checking for correct syntax of email
       } else if (!this.email.match(reg)) {
             this.visibilityEmail = false;
+            // checking if this user is already exist
             } else {
                 let k: number = 0;
                 for (let i = this.arrUsers.length - 1; i >= 0; i--) {
@@ -120,6 +135,7 @@ export class LoginComponent implements OnInit {
                 }
                 if (k == 1) {
                   this.visibilityUserAlreadyExist = false;
+                  // set current user from input's data
                 } else {
                     let indexUser: string = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
                     this.user = {
@@ -130,6 +146,7 @@ export class LoginComponent implements OnInit {
                       'bgcolor': '',
                       'fontSize': ''
                     };
+                    // all current data I should put to service
                     this.arrUsers.push(this.user);
                     this.configService.currentUser = this.user;
                     this.configService.currentPassword = this.user['password'];//add

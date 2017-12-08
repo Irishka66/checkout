@@ -17,13 +17,16 @@ export class AdminComponent implements OnInit  {
   constructor (private configService: ConfigService,
                private router: Router) {}
   ngOnInit() {
+    // taking current user from service
     this.currentUser = this.configService.currentUser;
     this.stylesConfig = {
       color: this.currentUser['color'],
       bgcolor: this.currentUser['bgcolor'],
       fontSize: this.currentUser['fontSize']
     };
+    // set styles of just sign-in-user with the help of service in admin-panel
     this.setConfigStyles(this.stylesConfig);
+    // set styles of user who changes something in edit-panel
     this.configService.styleConfigStream$.subscribe((objEdits) => {
       this.setConfigStyles(objEdits);
     });

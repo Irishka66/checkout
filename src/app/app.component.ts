@@ -1,5 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { ConfigService } from './services/config.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,29 +6,5 @@ import { ConfigService } from './services/config.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
- constructor (private configService: ConfigService) {}
-
- public colorForStyling: string;
- public bgcolorForStyling: string;
- public fontSizeForStyling: string;
-
- ngOnInit() {
-   // this.colorForStyling = this.configService.currentUserForService['color'];
-   // this.bgcolorForStyling = this.configService.currentUserForService['bgcolor'];
-   // this.fontSizeForStyling = this.configService.currentUserForService['fontSize'];
-
-   // this.configService.styleConfigStream$.subscribe( (objEdits) => {
-   //   console.log(objEdits);
-   //   this.colorForStyling = objEdits['color'];
-   //   this.bgcolorForStyling = objEdits['bgcolor'];
-   //   this.fontSizeForStyling = objEdits['fontSize'];
-   // });
-
-   // this.configService.setDefaultStylesStream$.subscribe( () => {
-   //   this.colorForStyling = '';
-   //   this.bgcolorForStyling = '';
-   //   this.fontSizeForStyling = '';
-   // });
- }
+export class AppComponent {
 }
