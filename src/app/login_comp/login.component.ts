@@ -148,6 +148,7 @@ export class LoginComponent implements OnInit {
                     this.configService.currentUser = this.user;
                     this.configService.currentPassword = this.user['password'];//add
                     this.configService.arrUsers = this.arrUsers;
+                    this.configService.saveLocalUsers();
                     this.router.navigate(['/admin']);
                 }
     }

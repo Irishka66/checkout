@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="73ebb5e4-bf75-4039-82f1-16884fc54749" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/login_comp/login.component.ts" afterPath="$PROJECT_DIR$/src/app/login_comp/login.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/services/config.service.ts" afterPath="$PROJECT_DIR$/src/app/services/config.service.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/login_comp/login.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+            <state relative-caret-position="313">
+              <caret line="150" column="20" lean-forward="false" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="20" />
               <folding>
                 <element signature="e#0#92#0" expanded="true" />
               </folding>
@@ -216,8 +215,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,6 +266,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,11 +332,12 @@
       <workItem from="1512717188615" duration="618000" />
       <workItem from="1512718120509" duration="148000" />
       <workItem from="1512718762039" duration="515000" />
+      <workItem from="1512719690852" duration="433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268687000" />
+    <option name="totallyTimeSpent" value="269120000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -356,8 +356,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2360877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -644,7 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -728,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/login_comp/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="97" column="53" lean-forward="false" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+        <state relative-caret-position="313">
+          <caret line="150" column="20" lean-forward="false" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="20" />
           <folding>
             <element signature="e#0#92#0" expanded="true" />
           </folding>
