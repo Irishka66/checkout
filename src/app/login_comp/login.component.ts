@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   public email: string = undefined;
   public password: string = undefined;
   public user: Object = {};
-  public arrUsers: Array<any> = [];
   public visibilityEmail: boolean = true;
   public visibilityFill: boolean = true;
   public visibilityNotYourData: boolean = true;
@@ -28,8 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // take arrUsers from local storage
     if (JSON.parse(localStorage.getItem('users')) !== null) {
-      this.arrUsers = JSON.parse(localStorage.getItem('users'));
-      this.configService.arrUsers = this.arrUsers;
+     this.configService.arrUsers = JSON.parse(localStorage.getItem('users'));
     }
     // taking data from service
     this.configService.styleConfigStream$.subscribe( (objEdits) => {
@@ -60,8 +58,7 @@ export class LoginComponent implements OnInit {
       };
       // all current data I should put to service
       this.configService.currentUser = this.completeCurrentUser;
-      this.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.completeCurrentUser);
-      this.configService.arrUsers = this.arrUsers;
+      this.configService.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.completeCurrentUser);
       this.configService.saveLocalUsers();
     });
   }
@@ -83,11 +80,11 @@ export class LoginComponent implements OnInit {
               // I should find sign-in-user in arrUsers
             } else {
                 let k: number = 0;
-                for (let i = this.arrUsers.length - 1; i >= 0; i--) {
+                for (let i = this.configService.arrUsers.length - 1; i >= 0; i--) {
                   // if email and password are in arrUsers
-                  if (this.email == this.arrUsers[i]['email'] && this.password == this.arrUsers[i]['password']) {
+                  if (this.email == this.configService.arrUsers[i]['email'] && this.password == this.configService.arrUsers[i]['password']) {
                     // setting current user
-                    this.user = this.arrUsers[i];
+                    this.user = this.configService.arrUsers[i];
                     this.configService.indexOfCurrentUser = i;
                     this.configService.currentUser = this.user;
                     this.router.navigate(['/admin']);
@@ -119,8 +116,8 @@ export class LoginComponent implements OnInit {
             // checking if this user is already exist
             } else {
                 let k: number = 0;
-                for (let i = this.arrUsers.length - 1; i >= 0; i--) {
-                  if (this.email == this.arrUsers[i]['email'] && this.password == this.arrUsers[i]['password']) {
+                for (let i = this.configService.arrUsers.length - 1; i >= 0; i--) {
+                  if (this.email == this.configService.arrUsers[i]['email'] && this.password == this.configService.arrUsers[i]['password']) {
                     k = 1;
                     break;
                   }
@@ -139,10 +136,9 @@ export class LoginComponent implements OnInit {
                       'fontSize': ''
                     };
                     // all current data I should put to service
-                    this.arrUsers.push(this.user);
-                    this.configService.indexOfCurrentUser = this.arrUsers.length - 1;
+                    this.configService.arrUsers.push(this.user);
+                    this.configService.indexOfCurrentUser = this.configService.arrUsers.length - 1;
                     this.configService.currentUser = this.user;
-                    this.configService.arrUsers = this.arrUsers;
                     this.configService.saveLocalUsers();
                     this.router.navigate(['/admin']);
                 }

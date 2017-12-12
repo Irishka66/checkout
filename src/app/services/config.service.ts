@@ -15,7 +15,7 @@ export class ConfigService {
     this.styleConfigSubject.next(objEdits);
   }
 
-  // this method save current arrUsers to local storage
+  // this method saves current arrUsers to local storage
   public saveLocalUsers() {
     let localUsers = JSON.stringify(this.arrUsers);
     localStorage.setItem('users', localUsers);
