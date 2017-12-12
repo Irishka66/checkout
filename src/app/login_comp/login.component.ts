@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   public colorForStyling: string;
   public bgcolorForStyling: string;
   public fontSizeForStyling: string;
-  public completeCurrentUser: Object;
   public email: string = undefined;
   public password: string = undefined;
   public user: Object = {};
@@ -48,17 +47,13 @@ export class LoginComponent implements OnInit {
         this.fontSizeForStyling = this.configService.currentUser['fontSize'];
       }
       // making complete current user
-      this.completeCurrentUser = {
-        'idUser' : this.user['idUser'],
-        'email' : this.user['email'],
-        'password' : this.configService.currentUser['password'],
-        'color' : this.colorForStyling,
-        'bgcolor': this.bgcolorForStyling,
-        'fontSize': this.fontSizeForStyling
-      };
+      this.user['password'] = this.configService.currentUser['password'];
+      this.user['color'] = this.colorForStyling;
+      this.user['bgcolor'] = this.bgcolorForStyling;
+      this.user['fontSize'] = this.fontSizeForStyling;
       // all current data I should put to service
-      this.configService.currentUser = this.completeCurrentUser;
-      this.configService.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.completeCurrentUser);
+      this.configService.currentUser = this.user;
+      this.configService.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.user);
       this.configService.saveLocalUsers();
     });
   }
