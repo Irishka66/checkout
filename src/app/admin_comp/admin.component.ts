@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Input, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../services/config.service';
 import { Router } from '@angular/router';
 
@@ -14,8 +14,10 @@ export class AdminComponent implements OnInit  {
   public colorForStyling: string;
   public bgcolorForStyling: string;
   public fontSizeForStyling: string;
+
   constructor (private configService: ConfigService,
                private router: Router) {}
+
   ngOnInit() {
     // taking current user from service
     this.currentUser = this.configService.currentUser;

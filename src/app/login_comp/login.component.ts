@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Input, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../services/config.service';
 import { Router} from '@angular/router';
 
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     // take arrUsers from local storage
     if (JSON.parse(localStorage.getItem('users')) !== null) {
       this.arrUsers = JSON.parse(localStorage.getItem('users'));
+      this.configService.arrUsers = this.arrUsers;
     }
     // taking data from service
     this.configService.styleConfigStream$.subscribe( (objEdits) => {
@@ -52,15 +53,14 @@ export class LoginComponent implements OnInit {
       this.completeCurrentUser = {
         'idUser' : this.user['idUser'],
         'email' : this.user['email'],
-        'password' : this.user['password'],
+        'password' : this.configService.currentUser['password'],
         'color' : this.colorForStyling,
         'bgcolor': this.bgcolorForStyling,
         'fontSize': this.fontSizeForStyling
       };
       // all current data I should put to service
       this.configService.currentUser = this.completeCurrentUser;
-      this.configService.currentPassword = this.completeCurrentUser['password'];
-      this.arrUsers.push(this.completeCurrentUser);
+      this.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.completeCurrentUser);
       this.configService.arrUsers = this.arrUsers;
       this.configService.saveLocalUsers();
     });
@@ -88,13 +88,8 @@ export class LoginComponent implements OnInit {
                   if (this.email == this.arrUsers[i]['email'] && this.password == this.arrUsers[i]['password']) {
                     // setting current user
                     this.user = this.arrUsers[i];
+                    this.configService.indexOfCurrentUser = i;
                     this.configService.currentUser = this.user;
-                    this.configService.currentPassword = this.user['password'];//add
-                    let styleConfig = {
-                      color: this.user['color'],
-                      bgcolor: this.user['bgcolor'],
-                      fontSize: this.user['fontSize']
-                    };
                     this.router.navigate(['/admin']);
                     k = 1;
                     break;
@@ -145,8 +140,8 @@ export class LoginComponent implements OnInit {
                     };
                     // all current data I should put to service
                     this.arrUsers.push(this.user);
+                    this.configService.indexOfCurrentUser = this.arrUsers.length - 1;
                     this.configService.currentUser = this.user;
-                    this.configService.currentPassword = this.user['password'];//add
                     this.configService.arrUsers = this.arrUsers;
                     this.configService.saveLocalUsers();
                     this.router.navigate(['/admin']);

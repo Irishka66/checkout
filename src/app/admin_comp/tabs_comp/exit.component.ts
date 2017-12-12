@@ -22,7 +22,5 @@ export class ExitComponent {
 
   logout() {
     this.router.navigate(['/']);
-    // this method saving current user's data to local storage when he exit
-    this.configService.saveLocalUsers();
   }
 }

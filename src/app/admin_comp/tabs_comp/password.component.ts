@@ -29,7 +29,7 @@ export class PasswordComponent {
       || this.oldPassword === '' || this.newPassword1 === '' || this.newPassword2 === ''){
       this.visibilityFillPasswords = false;
       // checking if password in old-password-input is equal to real current password
-    } else if (this.oldPassword !== this.configService.currentPassword){
+    } else if (this.oldPassword !== this.configService.currentUser['password']){
                 this.visibilityOldPassword = false;
                 // checking if two new passwords are equal
               } else if (this.newPassword1 !== this.newPassword2){
@@ -37,9 +37,8 @@ export class PasswordComponent {
                         // put new password to service
                       } else {
                         this.visibilitySuccessMessage = false;
-                        this.configService.currentPassword = this.newPassword1;
                         this.configService.currentUser['password'] = this.newPassword1;
-                        this.configService.arrUsers.push(this.configService.currentUser);
+                        this.configService.arrUsers.splice(this.configService.indexOfCurrentUser, 1, this.configService.currentUser);
                         this.configService.saveLocalUsers();
                       }
   }
