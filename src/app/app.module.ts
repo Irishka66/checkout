@@ -1,35 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+
+import { ReactiveFormsModule }   from '@angular/forms';
+
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login_comp/login.component';
-import { AdminComponent } from './admin_comp/admin.component';
-import { EditComponent } from './admin_comp/tabs_comp/edit.component';
-import { PasswordComponent } from './admin_comp/tabs_comp/password.component';
-import { ExitComponent } from './admin_comp/tabs_comp/exit.component';
+import { CheckoutComponent } from './checkout_comp/checkout.component';
+import { ResultComponent } from './result_comp/result.component';
+
+
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ConfigService } from './services/config.service';
 import {Routes, RouterModule} from '@angular/router';
 
 const appRoutes: Routes =[
-  { path: '', component: LoginComponent},
-  { path: 'admin', component: AdminComponent},
-  { path: '**', component: LoginComponent }
+  { path: '', component: CheckoutComponent},
+  { path: 'result', component: ResultComponent},
+  { path: '**', component: CheckoutComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AdminComponent,
-    EditComponent,
-    PasswordComponent,
-    ExitComponent
+    CheckoutComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+
+    ReactiveFormsModule,
+
     ColorPickerModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot()
