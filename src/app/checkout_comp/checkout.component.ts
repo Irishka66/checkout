@@ -14,53 +14,114 @@ import { NgForm} from '@angular/forms';
 })
 
 export class CheckoutComponent implements OnInit {
-
-  ngOnInit() {
-    window.localStorage.clear();
-  }
-
   constructor (private configService: ConfigService,
                private router: Router) {}
 
+
+  public user: Object = {};
   public firstName: string = undefined;
   public lastName: string = undefined;
   public userName: string = undefined;
   public email: string = undefined;
   public address: string = undefined;
   public address2: string = undefined;
-  public country: string = undefined;
-  public state: string = undefined;
+  public selectedCountry: string = undefined;
+  public selectedState: string = undefined;
   public zip: string = undefined;
 
-  public sameAddress: boolean = false;
-  public saveInfo: boolean = false;
+  public isSameAddress: boolean = false;
+  public isSavingInfo: boolean = false;
   public payment: string = 'credit';
 
   public nameOnCard: string = undefined;
   public creditCardNumber: string = undefined;
   public expiration: string = undefined;
   public cvv: string = undefined;
-  public user: Object = {};
+
+
+  ngOnInit() {
+    if(this.configService.currentUser['firstName']) {
+      this.user = this.configService.currentUser;
+      console.log(this.user);
+    } else {
+      this.user = {
+        'idUser' : 1,
+        'firstName' : this.firstName,
+        'lastName' : this.lastName,
+        'userName' : this.userName,
+        'email' : this.email,
+        'address' : this.address,
+        'address2' : this.address2,
+        'selectedCountry' : this.selectedCountry,
+        'selectedState' : this.selectedState,
+        'zip' : this.zip,
+        'isSameAddress' : this.isSameAddress,
+        'isSavingInfo' : this.isSavingInfo,
+        'payment' : this.payment,
+        'nameOnCard' : this.nameOnCard,
+        'creditCardNumber' : this.creditCardNumber,
+        'expiration' : this.expiration,
+        'cvv' : this.cvv,
+      };
+      console.log(this.user);
+    }
+
+  }
+
+
+  public countries: Array<any> = [
+     "United States", "Australia", "Canada", "Brazil","England"
+  ];
+
+  public states: Array<any>;
+  public stateRequired: boolean = false;
+  public emailRequired: boolean = false;
+  public invalidEmail: boolean = false;
+  public defaultStateSelect: boolean = false;
+
+  onCountrySelectChange() {
+    this.states = [];
+    this.stateRequired = false;
+    this.user['selectedState'] = undefined;
+    if(this.user['selectedCountry'] == 'United States') {
+      this.states = [
+        'Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
+        'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
+        'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
+        'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
+        'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+        'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
+        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
+        'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+      ];
+      this.stateRequired = true;
+
+    }
+  }
+
+  onEmailChange() {
+    let reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    this.invalidEmail = false;
+    if(this.user['email'] == '') {
+      return;
+    }
+    if (!this.user['email'].match(reg)) {
+      this.invalidEmail = true;
+      console.log('this.invalidEmail ' + this.invalidEmail);
+    }
+
+    // if (!this.email.match(reg)) {
+    //   this.visibilityEmailError = true;
+    //   return;
+    // }
+
+
+  }
 
   checkout() {
-    this.user = {
-      'idUser' : 1,
-      'firstName' : this.firstName,
-      'lastName' : this.lastName,
-      'userName' : this.userName,
-      'email': this.email,
-      'address': this.address,
-      'address2' : this.address2,
-      'country' : this.country,
-      'state' : this.state,
-      'zip': this.zip,
-      'nameOnCard' : this.nameOnCard,
-      'creditCardNumber' : this.creditCardNumber,
-      'expiration' : this.expiration,
-      'cvv': this.cvv,
-
-    };
+    this.configService.currentUser = this.user;
     console.log(this.user);
+    this.router.navigate(['/result']);
   }
 
 

@@ -1,7 +1,49 @@
-h1 {
-  font-weight: bold;
+.form-control {
+  font-size: 14px;
 }
 
-input:invalid {
+select.form-control[_ngcontent-c1]:not([size]):not([multiple]) {
+  height: calc(2.25rem);
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/*input:invalid {*/
+  /*border: 1px solid red;*/
+/*}*/
+
+input.ng-dirty.ng-invalid {
   border: 1px solid red;
+}
+
+select.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
+
+input.ng-dirty.ng-valid {
+  border: 1px solid green;
+}
+
+select.ng-dirty.ng-valid {
+  border: 1px solid green;
+}
+
+.checkboxContainer {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.checkboxContainer label {
+  position: relative;
+  top: 4px;
+}
+
+.custom-control-description {
+  position: relative;
+  top: 5px;
 }
