@@ -53,6 +53,8 @@ export class CheckoutComponent implements OnInit {
   public emailRequired: boolean = false;
   public patternEmail: boolean = false;
 
+  public arrUsers: Array<any> = [];
+
   ngOnInit() {
     if(this.configService.currentUser['firstName']) {
       this.user = this.configService.currentUser;
@@ -107,7 +109,23 @@ export class CheckoutComponent implements OnInit {
 
   checkout() {
     this.configService.currentUser = this.user;
+    if(this.user['wantToSaveInfo'] == true) {
+      this.arrUsers.push(this.user);
+      this.saveLocalUsers();
+    } else {
+      for (let i = this.arrUsers.length - 1; i >= 0; i--) {
+        if (this.user['idUser'] == this.arrUsers[i]['idUser']) {
+          this.arrUsers.splice(i,1)
+        }
+      }
+      this.saveLocalUsers();
+    }
     this.router.navigate(['/result']);
     console.log(this.user);
+  }
+
+  saveLocalUsers() {
+    let localUsers = JSON.stringify(this.arrUsers);
+    localStorage.setItem('users', localUsers);
   }
 }
