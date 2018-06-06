@@ -88,19 +88,20 @@ export class CheckoutComponent implements OnInit {
   }
 
   onCountryChange() {
-    this.states = [];
-    this.stateRequired = false;
-    this.user['selectedState'] = undefined;
     if(this.user['selectedCountry'] == 'United States') {
       this.states = this.usaStates;
       this.stateRequired = true;
+      return;
     }
+    this.states = [];
+    this.stateRequired = false;
+    this.user['selectedState'] = undefined;
   }
 
   onEmailChange() {
-    this.emailRequired = false;
-    this.patternEmail = false;
     if(this.user['email'] == '') {
+      this.emailRequired = false;
+      this.patternEmail = false;
       return;
     }
     this.emailRequired = true;
