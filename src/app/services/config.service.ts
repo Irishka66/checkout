@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConfigService {
-  public currentUser: Object = {};
   constructor() { }
+  public currentUser: Object = {};
 }

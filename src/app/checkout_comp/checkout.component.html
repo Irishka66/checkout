@@ -1,4 +1,4 @@
-<form #myForm="ngForm" novalidate name="iraform">
+<form #checkoutForm="ngForm" novalidate>
   <h1>Billing address</h1>
 
   <div class="form-group row">
@@ -7,7 +7,6 @@
       <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName"
              name="firstName" required pattern="^[a-zA-Z-\s]+$">
     </div>
-
     <div class="col-md-6 col-sm-12">
       <label for="lastName" class="col-form-label">Last name</label>
       <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName"
@@ -30,7 +29,7 @@
   <div class="form-group">
     <label for="email" class="col-form-label">Email (Optional)</label>
     <input type="email" class="form-control" id="email" [(ngModel)]="user.email"
-             name="email" placeholder="you@example.com" (change)="onEmailChange()" [required]="emailRequired">
+             name="email" placeholder="you@example.com" (input)="onEmailChange()" [required]="emailRequired" [email]="patternEmail">
   </div>
 
   <div class="form-group">
@@ -48,15 +47,14 @@
   <div class="form-group row">
     <div class="col-md-5 col-sm-12">
       <label for="country" class="col-form-label">Country</label>
-      <select id="country" class="form-control" [(ngModel)]="user.selectedCountry" name="countrySelect" required (change)="onCountrySelectChange()">
+      <select id="country" class="form-control" [(ngModel)]="user.selectedCountry" name="country" required (change)="onCountryChange()">
         <option [ngValue]="undefined" selected>Choose...</option>
         <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
       </select>
     </div>
-
     <div class="col-md-4 col-sm-12">
       <label for="state" class="col-form-label">State</label>
-      <select id="state" class="form-control" [(ngModel)]="user.selectedState" name="stateSelect" [required]="stateRequired">
+      <select id="state" class="form-control" [(ngModel)]="user.selectedState" name="state" [required]="stateRequired">
         <option [ngValue]="undefined" selected>Choose...</option>
         <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
       </select>
@@ -64,22 +62,21 @@
     <div class="col-md-3 col-sm-12">
       <label for="zip" class="col-form-label">Zip</label>
       <input type="text" class="form-control" id="zip" [(ngModel)]="user.zip"
-               name="zip" required pattern="^[ 0-9]+$">
+               name="zip" required pattern="^[ 0-9-]+$">
     </div>
   </div>
 
   <div class="form-group checkboxContainer">
     <div>
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.isSameAddress" name="isSameAddress">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.haveSameAddress" name="haveSameAddress">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Shipping address is the same as my billing address</span>
       </label>
     </div>
-
     <div>
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.isSavingInfo" name="isSavingInfo">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.wantToSaveInfo" name="wantToSaveInfo">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Save this information for next time</span>
       </label>
@@ -100,7 +97,7 @@
       <span class="custom-control-description">Debit card</span>
     </label>
     <label class="custom-control custom-radio">
-      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" [value]="'paypal'" [(ngModel)]="user.payment" [checked]="user.payment=='paypal'">
+      <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input" [value]="'paypal'" [(ngModel)]="user.payment" [checked]="user.payment=='paypal'">
       <span class="custom-control-indicator"></span>
       <span class="custom-control-description">Paypal</span>
     </label>
@@ -112,12 +109,11 @@
       <input type="text" class="form-control" id="nameOnCard" [(ngModel)]="user.nameOnCard"
              name="nameOnCard" required pattern="^[a-zA-Z-\s]+$">
       <small id="emailHelp" class="form-text text-muted">Full name as displayed on card</small>
-
     </div>
     <div class="col-md-6 col-sm-12">
       <label for="creditCardNumber" class="col-form-label">Credit card number</label>
       <input type="text" class="form-control" id="creditCardNumber" [(ngModel)]="user.creditCardNumber"
-             name="creditCardNumber" required pattern="^[ 0-9]+$">
+             name="creditCardNumber" required pattern="^[ 0-9-]+$">
     </div>
   </div>
 
@@ -135,40 +131,6 @@
   </div>
 
   <div class="form-group">
-    <button type="submit" [disabled]="invalidEmail || myForm.invalid" class="btn btn-primary col-sm-12" (click)="checkout()">Checkout</button>
+    <button type="submit" [disabled]="checkoutForm.invalid" class="btn btn-primary col-sm-12" (click)="checkout()">Checkout</button>
   </div>
 </form>
-
-
-<!--<div class="form-group checkboxContainer">-->
-  <!--<div class="form-check">-->
-    <!--<input type="checkbox" class="form-check-input" id="check1" [(ngModel)]="sameAddress" name="sameAddress">-->
-    <!--<label class="form-check-label" for="check1">Shipping address is the same as my billing address</label>-->
-  <!--</div>-->
-  <!--<div class="form-check">-->
-    <!--<input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="saveInfo" name="saveInfo">-->
-    <!--<label class="form-check-label" for="check2">Save this information for next time</label>-->
-  <!--</div>-->
-<!--</div>-->
-
-
-<!--<div class="form-group radioContainer">-->
-  <!--<div class="form-check">-->
-    <!--<input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios1" [value]="'credit'" [(ngModel)]="payment" [checked]="payment=='credit'">-->
-    <!--<label class="form-check-label" for="gridRadios1">-->
-      <!--Credit card-->
-    <!--</label>-->
-  <!--</div>-->
-  <!--<div class="form-check">-->
-    <!--<input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios2" [value]="'debit'" [(ngModel)]="payment" [checked]="payment=='debit'">-->
-    <!--<label class="form-check-label" for="gridRadios2">-->
-      <!--Debit card-->
-    <!--</label>-->
-  <!--</div>-->
-  <!--<div class="form-check">-->
-    <!--<input class="form-check-input" type="radio" name="gridRadios1" id="gridRadios3" [value]="'paypal'" [(ngModel)]="payment" [checked]="payment=='paypal'">-->
-    <!--<label class="form-check-label" for="gridRadios3">-->
-      <!--Paypal-->
-    <!--</label>-->
-  <!--</div>-->
-<!--</div>-->

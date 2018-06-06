@@ -1,3 +1,7 @@
+.form-group {
+  margin-bottom: 0.7rem;
+}
+
 .form-control {
   font-size: 14px;
 }
@@ -10,10 +14,6 @@ h1 {
   font-weight: bold;
   margin-bottom: 1rem;
 }
-
-/*input:invalid {*/
-  /*border: 1px solid red;*/
-/*}*/
 
 input.ng-dirty.ng-invalid {
   border: 1px solid red;
@@ -32,8 +32,7 @@ select.ng-dirty.ng-valid {
 }
 
 .checkboxContainer {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding: 20px 0 10px;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
