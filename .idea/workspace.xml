@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73ebb5e4-bf75-4039-82f1-16884fc54749" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/checkout_comp/checkout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/checkout_comp/checkout.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="checkout.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/checkout_comp/checkout.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+            <state relative-caret-position="221">
+              <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -327,12 +326,12 @@
       <workItem from="1513071606374" duration="755000" />
       <workItem from="1527756849092" duration="18339000" />
       <workItem from="1527861308800" duration="12903000" />
-      <workItem from="1528109944358" duration="54054000" />
+      <workItem from="1528109944358" duration="54610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369219000" />
+    <option name="totallyTimeSpent" value="369775000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -634,8 +633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/checkout_comp/checkout.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        <state relative-caret-position="221">
+          <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

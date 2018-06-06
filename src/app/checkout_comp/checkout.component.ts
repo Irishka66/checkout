@@ -117,15 +117,14 @@ export class CheckoutComponent implements OnInit {
     this.configService.currentUser = this.user;
     if(this.user['wantToSaveInfo'] == true) {
       this.arrUsers.push(this.user);
-      this.saveLocalUsers();
     } else {
       for (let i = this.arrUsers.length - 1; i >= 0; i--) {
         if (this.user['idUser'] == this.arrUsers[i]['idUser']) {
           this.arrUsers.splice(i,1)
         }
       }
-      this.saveLocalUsers();
     }
+    this.saveLocalUsers();
     this.router.navigate(['/result']);
     console.log(this.user);
   }
