@@ -108,6 +108,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout() {
+    for(let key in this.user) {
+      if(typeof this.user[key] == 'string') {
+        this.user[key] = this.user[key].trim();
+      }
+    }
     this.configService.currentUser = this.user;
     if(this.user['wantToSaveInfo'] == true) {
       this.arrUsers.push(this.user);
