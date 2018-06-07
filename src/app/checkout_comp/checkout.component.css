@@ -37,12 +37,6 @@ select.ng-dirty.ng-valid {
   border-bottom: 1px solid gray;
 }
 
-.checkboxContainer label {
-  position: relative;
-  top: 4px;
-}
-
-.custom-control-description {
-  position: relative;
-  top: 5px;
+.custom-control-label {
+  padding-top: 5px;
 }

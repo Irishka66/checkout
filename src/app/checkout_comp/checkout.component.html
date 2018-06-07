@@ -66,41 +66,32 @@
     </div>
   </div>
 
-  <div class="form-group checkboxContainer">
-    <div>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.haveSameAddress" name="haveSameAddress">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Shipping address is the same as my billing address</span>
-      </label>
+  <div class="form-group custom-controls-stacked checkboxContainer">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="user.haveSameAddress" name="haveSameAddress">
+      <label class="custom-control-label" for="customCheck1">Shipping address is the same as my billing address</label>
     </div>
-    <div>
-      <label class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" [(ngModel)]="user.wantToSaveInfo" name="wantToSaveInfo">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Save this information for next time</span>
-      </label>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck2" [(ngModel)]="user.wantToSaveInfo" name="wantToSaveInfo">
+      <label class="custom-control-label" for="customCheck2">Save this information for next time</label>
     </div>
   </div>
 
   <h1>Payment</h1>
 
   <div class="form-group custom-controls-stacked">
-    <label class="custom-control custom-radio">
-      <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" [value]="'credit'" [(ngModel)]="user.payment" [checked]="user.payment=='credit'">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Credit card</span>
-    </label>
-    <label class="custom-control custom-radio">
-      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" [value]="'debit'" [(ngModel)]="user.payment" [checked]="user.payment=='debit'">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Debit card</span>
-    </label>
-    <label class="custom-control custom-radio">
-      <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input" [value]="'paypal'" [(ngModel)]="user.payment" [checked]="user.payment=='paypal'">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Paypal</span>
-    </label>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" [value]="'credit'" [(ngModel)]="user.payment" [checked]="user.payment=='credit'">
+      <label class="custom-control-label" for="customRadio1">Credit card</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" [value]="'debit'" [(ngModel)]="user.payment" [checked]="user.payment=='debit'">
+      <label class="custom-control-label" for="customRadio2">Debit card</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" [value]="'paypal'" [(ngModel)]="user.payment" [checked]="user.payment=='paypal'">
+      <label class="custom-control-label" for="customRadio3">Paypal</label>
+    </div>
   </div>
 
   <div class="form-group row">
