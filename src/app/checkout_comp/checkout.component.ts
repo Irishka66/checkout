@@ -9,7 +9,7 @@ import { NgForm} from '@angular/forms';
 @Component({
   selector: 'checkout-comp',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.scss']
 })
 
 export class CheckoutComponent implements OnInit {

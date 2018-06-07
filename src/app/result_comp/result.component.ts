@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'result-comp',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.scss']
 })
 
 export class ResultComponent implements OnInit {
