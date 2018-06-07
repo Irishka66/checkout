@@ -6,13 +6,12 @@
   font-size: 14px;
 }
 
-select.form-control[_ngcontent-c1]:not([size]):not([multiple]) {
-  height: calc(2.25rem);
+h5 {
+  font-weight: bold;
 }
 
-h1 {
-  font-weight: bold;
-  margin-bottom: 1rem;
+select.form-control[_ngcontent-c1]:not([size]):not([multiple]) {
+  height: calc(2.25rem);
 }
 
 input.ng-dirty.ng-invalid {
@@ -38,5 +37,5 @@ select.ng-dirty.ng-valid {
 }
 
 .custom-control-label {
-  padding-top: 5px;
+  padding-top: 3px;
 }
